@@ -1,11 +1,19 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Register() {
+  const navigate = useNavigate();
+
   const onEmail = (event) => {
     console.log("Value=", event.target.value)
   }
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    navigate("/user-dashboard")
+  }
+  
   return (
     <Container>
       <Row>
@@ -16,7 +24,7 @@ function Register() {
           </div>
         </Col>
         <Col className='col-sm-6 d-flex align-items-center'>
-          <form className='d-inline w-100'>
+          <form className='d-inline w-100' onSubmit={onSubmit}>
 
             <label className='color-light m-8'>Name:</label>
             <div><input className='mt-8 w-70' name="name" type="text" onChange={onEmail} /></div>
