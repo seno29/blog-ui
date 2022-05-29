@@ -1,13 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+:root{
+  --backgroundColor: #041C32;
+  --white: #ffffff;
+  --primary: #04293A;
+  --secondary: #064663;
+  --secondary-text: #6584b2;
+  --light: #ECB365;
+  --font-medium: 16px;
+}
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--backgroundColor) !important;
+  color: var(--white) !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.height-100vh{
+  height: 100vh;
+}
+
+.w-100{
+  width: 100%;
+}
+.w-70{
+  width: 70%;
+}
+
+.main-title{
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  font-weight: 700;
+  color: var(--light);
+}
+
+/*content-alignment*/
+.justify-content-space-between{
+  justify-content: space-between;
+}
+
+/* Colors classes*/
+.color-light{
+  color: var(--light);
+}
+.color-primary{
+  color: var(--primary);
+}
+.color-sec{
+  color: var(--secondary);
+}
+.color-sec-text{
+  color: var(--secondary-text)
+}
+
+/* Margin classes*/
+.mt-8{
+  margin-top: 8px;
+}
+.mt-12{
+  margin-top: 12px;
+}
+.mt-16{
+  margin-top: 16px;
+}
+.mt-28{
+  margin-top: 28px;
+}
+.ml-10{
+  margin-left: 10px;
+}
+/* Buttons */
+.p-btn{
+  background-color: var(--backgroundColor);
+  color: var(--light);
+  border: 2px solid var(--light);
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.p-btn:hover{
+  background-color: var(--light);
+  color: var(--backgroundColor);
+}
+
+/*Form styles*/
+input[type="text"], input[type="password"] {
+  background-color: var(--backgroundColor);
+  color: white;
+  padding: 6px;
+  border: 2px solid var(--secondary);
+  border-radius: 3px;
+  font-size: var(--font-medium);
+}
+input[type="text"]:focus, input[type="password"]:focus{
+  outline: none;
+  border: 2px solid var(--light);
+  border-radius: 3px;
+}
+
+/*custom radio button*/
+.radio {
+  margin: 0.5rem;
+}
+.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+  width: 1.4em;
+  height: 1.4em;
+}
+.radio input[type="radio"] + .radio-label:before {
+  content: '';
+  background: #f4f4f4;
+  border-radius: 100%;
+  border: 1px solid #b4b4b4;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  position: relative;
+  top: -0.2em;
+  margin-right: 1em;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease;
+}
+.radio input[type="radio"]:checked + .radio-label:before {
+  background-color: var(--light);
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+.radio input[type="radio"]:focus + .radio-label:before {
+  outline: none;
+  border-color: var(--light);
+}
+.radio input[type="radio"]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type="radio"] + .radio-label:empty:before {
+  margin-right: 0;
 }
