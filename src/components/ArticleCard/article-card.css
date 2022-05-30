@@ -1,0 +1,23 @@
+.a-outer{
+    border: 1px solid var(--secondary);
+    padding: 10px;
+    margin: 10px;
+}
+.a-outer:hover{
+    background-color: rgba(6,70,99, 0.2);
+    cursor: pointer;
+}
+.a-title{
+    flex: auto;
+    font-size: 18px;
+    color: var(--light);
+}
+.title-div{
+    border-bottom: 1px solid rgba(43, 122, 159, 0.2);
+    padding-bottom: 8px;
+}
+.a-date{
+    display: flex;
+    justify-content: flex-end;
+    color: rgba(255, 255, 255, 0.5);
+}

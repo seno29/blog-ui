@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
-:root{
-  --backgroundColor: #041C32;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+:root {
+  --backgroundColor: #041c32;
   --white: #ffffff;
-  --primary: #04293A;
+  --primary: #04293a;
   --secondary: #064663;
   --secondary-text: #6584b2;
-  --light: #ECB365;
+  --light: #ecb365;
   --font-medium: 16px;
 }
 
-
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--backgroundColor) !important;
@@ -20,22 +19,29 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.height-100vh{
+.height-100vh {
   height: 100vh;
 }
-
-.w-100{
+.w-100 {
   width: 100%;
 }
-.w-70{
+.w-70 {
   width: 70%;
 }
+.h-100px {
+  height: 100px;
+}
+.w-28{
+  width: 28%;
+}
+.w-25{
+  width: 25%;
+}
 
-.main-title{
+.main-title {
   font-size: 4rem;
   letter-spacing: 0.5rem;
   font-weight: 700;
@@ -43,42 +49,49 @@ code {
 }
 
 /*content-alignment*/
-.justify-content-space-between{
+.justify-content-space-between {
   justify-content: space-between;
 }
 
 /* Colors classes*/
-.color-light{
+.color-light {
   color: var(--light);
 }
-.color-primary{
+.color-primary {
   color: var(--primary);
 }
-.color-sec{
+.color-sec {
   color: var(--secondary);
 }
-.color-sec-text{
-  color: var(--secondary-text)
+.color-sec-text {
+  color: var(--secondary-text);
 }
 
 /* Margin classes*/
-.mt-8{
+.mt-8 {
   margin-top: 8px;
 }
-.mt-12{
+.mt-12 {
   margin-top: 12px;
 }
-.mt-16{
+.mt-16 {
   margin-top: 16px;
 }
-.mt-28{
+.mt-28 {
   margin-top: 28px;
 }
-.ml-10{
+.ml-10 {
   margin-left: 10px;
 }
+.ml-5 {
+  margin-left: 5px;
+}
+.m-10 {
+  margin: 10px;
+}
+
 /* Buttons */
-.p-btn{
+.p-btn {
   background-color: var(--backgroundColor);
   color: var(--light);
   border: 2px solid var(--light);
@@ -86,13 +99,14 @@ code {
   border-radius: 3px;
   font-weight: bold;
 }
-.p-btn:hover{
+.p-btn:hover {
   background-color: var(--light);
   color: var(--backgroundColor);
 }
 
 /*Form styles*/
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
   background-color: var(--backgroundColor);
   color: white;
   padding: 6px;
@@ -100,7 +114,8 @@ input[type="text"], input[type="password"] {
   border-radius: 3px;
   font-size: var(--font-medium);
 }
-input[type="text"]:focus, input[type="password"]:focus{
+input[type="text"]:focus,
+input[type="password"]:focus {
   outline: none;
   border: 2px solid var(--light);
   border-radius: 3px;
@@ -119,7 +134,7 @@ input[type="text"]:focus, input[type="password"]:focus{
   height: 1.4em;
 }
 .radio input[type="radio"] + .radio-label:before {
-  content: '';
+  content: "";
   background: #f4f4f4;
   border-radius: 100%;
   border: 1px solid #b4b4b4;

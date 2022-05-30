@@ -1,5 +1,4 @@
 import React from 'react'
-import "./login.css"
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 
