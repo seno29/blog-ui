@@ -6,15 +6,16 @@ function ArticleCard(props) {
         title,
         content,
         author,
-        dateModified
+        dateModified,
+        customClick
     } = props;
     return (
-        <div className='a-outer'>
+        <div className='a-outer' onClick={customClick}>
             <div className="d-flex title-div">
                 <div className="a-title">{title}</div>
                 <div className="a-author">Author : {author}</div>
             </div>
-            <div className="a-content">{content}</div>
+            <div className="a-content">{content.length > 300 ? content.substring(0,300) + "..." : content}</div>
             <div className='a-date'>Posted on : {dateModified}</div>
         </div>
 
