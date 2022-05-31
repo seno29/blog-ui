@@ -83,6 +83,9 @@ code {
 .mt-10 {
   margin-top: 10px;
 }
+.mt-100 {
+  margin-top: 100px;
+}
 .ml-10 {
   margin-left: 10px;
 }
@@ -92,7 +95,12 @@ code {
 .m-10 {
   margin: 10px;
 }
-
+.f-24{
+  font-size: 24px;
+}
+.f-20{
+  font-size: 20px;
+}
 /* Buttons */
 .p-btn {
   background-color: var(--backgroundColor);
@@ -106,6 +114,16 @@ code {
   background-color: var(--light);
   color: var(--backgroundColor);
 }
+
+.filled-btn {
+  background-color: var(--light);
+  color: var(--backgroundColor);
+  border: 2px solid var(--light);
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
 
 /*Form styles*/
 input[type="text"],

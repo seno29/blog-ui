@@ -10,7 +10,7 @@ function Login() {
     }
     const onSubmit = (event) => {
         event.preventDefault()
-        navigate("/user-dashboard")
+        navigate("/admin")
     }
     
     return (
