@@ -3,6 +3,7 @@ import ArticleRequestView from "./pages/ArticleRequestView/article-request-view"
 import ArticleView from "./pages/ArticleView/article-view";
 import Login from "./pages/Login/login";
 import Register from "./pages/Register/register";
+import SecurityCheck from "./pages/SecurityCheck/security-check";
 import SupAdmin from "./pages/SuperAdminDashboard/sup-admin";
 import UserDashboard from "./pages/UserDashboard/user-dashboard";
 
@@ -16,6 +17,11 @@ export const routes = [
         path: "/login",
         exact: true,
         component: <Login/>
+    },
+    {
+        path: "/security-check",
+        exact: true,
+        component: <SecurityCheck />
     },
     {
         path: "/register",
