@@ -127,6 +127,7 @@ code {
 
 /*Form styles*/
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   background-color: var(--backgroundColor);
   color: white;
@@ -163,7 +164,6 @@ input[type="password"]:focus {
   width: 1.4em;
   height: 1.4em;
   position: relative;
-  top: -0.2em;
   margin-right: 1em;
   vertical-align: top;
   cursor: pointer;
