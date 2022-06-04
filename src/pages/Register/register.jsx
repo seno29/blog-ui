@@ -122,7 +122,7 @@ function Register() {
                     <label className='radio-label color-light'>Admin</label>
                   </div>
                   <div className='radio'>
-                    <input type="radio" name="role" checked={role === "3"} onChange={(e) => setRole(e.target.value)} />
+                    <input type="radio" name="role" value="3" checked={role === "3"} onChange={(e) => setRole(e.target.value)} />
                     <label className='radio-label color-light'>Super Admin</label>
                   </div>
                 </div>
