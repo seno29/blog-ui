@@ -51,12 +51,13 @@ function Register() {
           axios.post(url, payload)
           .then((res) => {
             setRegistering(false)
-            if(res.status === 200){
+            const result = res.data;
+            if(result.status === 200){
               alert("Registered Successfully... Log In Now")
               navigate("/login")
             }
-            else if(res.status === 401){
-              alert("User already exist")
+            else if(result.status === 401){
+              alert(result.message)
             }
           })
           .catch((err) => {
