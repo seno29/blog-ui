@@ -6,6 +6,7 @@ import Register from "./pages/Register/register";
 import SecurityCheck from "./pages/SecurityCheck/security-check";
 import SupAdmin from "./pages/SuperAdminDashboard/sup-admin";
 import UserDashboard from "./pages/UserDashboard/user-dashboard";
+import WriteArticle from "./pages/WriteArticle/write-article";
 
 export const routes = [
     {
@@ -52,5 +53,10 @@ export const routes = [
         path: "/sup-admin",
         exact: true,
         component: <SupAdmin />
+    },
+    {
+        path: "/write-article",
+        exact: true,
+        component: <WriteArticle />
     },
 ]

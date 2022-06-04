@@ -31,12 +31,12 @@ function SecurityCheck() {
           localStorage.setItem("token", result.token)
           const userDetails = getLoggedInUserDetails()
           if(userDetails && userDetails.role ){
-            if(userDetails.role === 1){
+            if(userDetails.role === 1 || userDetails.role === 2){
               navigate('/user-dashboard')
             }
-            else if(userDetails.role === 2){
-              navigate('/admin')
-            }
+            // else if(){
+            //   navigate('/admin')
+            // }
             else if(userDetails.role === 3){
               navigate('/sup-admin')
             }

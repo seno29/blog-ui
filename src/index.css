@@ -128,7 +128,8 @@ code {
 /*Form styles*/
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+textarea {
   background-color: var(--backgroundColor);
   color: white;
   padding: 6px;
@@ -137,7 +138,9 @@ input[type="password"] {
   font-size: var(--font-medium);
 }
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
   outline: none;
   border: 2px solid var(--light);
   border-radius: 3px;

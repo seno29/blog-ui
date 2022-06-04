@@ -9,8 +9,16 @@ function ArticleCard(props) {
         dateModified,
         customClick
     } = props;
+    const onArticleClick = (e) => {
+        customClick({
+            "title":title,
+            "content": content,
+            "author": author,
+            "dateModified": dateModified
+        })
+    }
     return (
-        <div className='a-outer' onClick={customClick}>
+        <div className='a-outer' onClick={onArticleClick}>
             <div className="d-flex title-div">
                 <div className="a-title">{title}</div>
                 <div className="a-author">Author : {author}</div>
