@@ -40,6 +40,9 @@ code {
 .w-25{
   width: 25%;
 }
+.p-12{
+  padding: 1px 8px !important;
+}
 
 .main-title {
   font-size: 4rem;

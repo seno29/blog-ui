@@ -22,6 +22,9 @@ function Navbar() {
    const writeArticle = () => {
       navigate("/write-article")
    }
+   const goToHome = () => {
+      navigate("/user-dashboard")
+   }
    const reviewArticle = () => {
       
    }
@@ -46,10 +49,9 @@ function Navbar() {
                isLoggedIn() && (role === 2 || role === 3) &&
                (
                   <>
+                  <div className='nav-op' onClick={goToHome}>Home</div>
                   <div className='nav-op' onClick={writeArticle}>Write Blog</div>
                   <div className='nav-op' onClick={myBlogs}>My Blogs</div>
-                  
-                  
                   </>
                )
             }

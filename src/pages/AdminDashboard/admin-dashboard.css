@@ -1,0 +1,18 @@
+.tab-item{
+    font-weight: 600;
+    padding: 8px 25px;
+    color: var(--light);
+    border-top: 1px solid #ecb46573;
+    border-left: 1px solid #ecb46573;
+    border-right: 1px solid #ecb46573;
+}
+
+.tab-active{
+    background-color: var(--light) !important;
+    color: var(--backgroundColor) !important;
+}
+.tab-item:hover{
+    cursor: pointer;
+    background-color:#ecb46573;
+
+}

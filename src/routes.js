@@ -1,6 +1,7 @@
 import AdminDashboard from "./pages/AdminDashboard/admin-dashboard";
 import ArticleRequestView from "./pages/ArticleRequestView/article-request-view";
 import ArticleView from "./pages/ArticleView/article-view";
+import EditArticle from "./pages/EditArticle/edit-article";
 import Login from "./pages/Login/login";
 import Register from "./pages/Register/register";
 import SecurityCheck from "./pages/SecurityCheck/security-check";
@@ -58,5 +59,10 @@ export const routes = [
         path: "/write-article",
         exact: true,
         component: <WriteArticle />
+    },
+    {
+        path: "/edit-article",
+        exact: true,
+        component: <EditArticle />
     },
 ]
