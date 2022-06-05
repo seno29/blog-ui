@@ -4,6 +4,7 @@ import ArticleView from "./pages/ArticleView/article-view";
 import EditArticle from "./pages/EditArticle/edit-article";
 import Login from "./pages/Login/login";
 import Register from "./pages/Register/register";
+import ReviewArticle from "./pages/ReviewArticle/review-article";
 import SecurityCheck from "./pages/SecurityCheck/security-check";
 import SupAdmin from "./pages/SuperAdminDashboard/sup-admin";
 import UserDashboard from "./pages/UserDashboard/user-dashboard";
@@ -64,5 +65,10 @@ export const routes = [
         path: "/edit-article",
         exact: true,
         component: <EditArticle />
+    },
+    {
+        path: "/review-article",
+        exact: true,
+        component: <ReviewArticle />
     },
 ]

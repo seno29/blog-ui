@@ -26,7 +26,7 @@ function Navbar() {
       navigate("/user-dashboard")
    }
    const reviewArticle = () => {
-      
+      navigate("/review-article")
    }
    return (
       <div className='nav-bar'>
@@ -35,23 +35,26 @@ function Navbar() {
             {
                isLoggedIn() &&
                (<><div className='name-label'>Hello {userDetails && userDetails.name && userDetails.name.split(" ")[0]}!</div>
-                  </>)
+               </>)
             }
             {
-               isLoggedIn() && ( role === 3) &&
+               isLoggedIn() && (role === 3) &&
                (
                   <>
+                     <div className='nav-op' onClick={goToHome}>Home</div>
                      <div className='nav-op' onClick={reviewArticle}>Review Blogs</div>
+                     <div className='nav-op' onClick={writeArticle}>Write Blog</div>
+                     <div className='nav-op' onClick={myBlogs}>My Blogs</div>
                   </>
                )
             }
             {
-               isLoggedIn() && (role === 2 || role === 3) &&
+               isLoggedIn() && (role === 2) &&
                (
                   <>
-                  <div className='nav-op' onClick={goToHome}>Home</div>
-                  <div className='nav-op' onClick={writeArticle}>Write Blog</div>
-                  <div className='nav-op' onClick={myBlogs}>My Blogs</div>
+                     <div className='nav-op' onClick={goToHome}>Home</div>
+                     <div className='nav-op' onClick={writeArticle}>Write Blog</div>
+                     <div className='nav-op' onClick={myBlogs}>My Blogs</div>
                   </>
                )
             }
@@ -63,7 +66,7 @@ function Navbar() {
                   </>
                )
             }
-            
+
          </div>
       </div>
    )
