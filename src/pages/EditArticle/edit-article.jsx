@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/nav-bar'
 import { Container, Row, Col } from 'react-bootstrap'
-import { getBaseUrl } from '../../utility'
+import { getBaseUrl, getCurrentUserRole } from '../../utility'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,63 +13,96 @@ function EditArticle() {
     const [title, settitle] = useState("")
     const [content, setcontent] = useState("")
     const navigate = useNavigate()
-    
+
     useEffect(() => {
         settitle(article.title)
         setcontent(article.content)
     }, [article])
 
-    const onDraft = () => {
-        if(title !== "" && content!==""){
-            const url = getBaseUrl() + "addArticle"
-            axios.post(url, {
+    const onDraft = (e) => {
+        console.log("CALLED")
+        if (title !== "" && content !== "") {
+
+            var url = ""
+            if (article.articleId) { //staging
+                url = getBaseUrl() + "updateStaging"
+            }
+            else {
+                url = getBaseUrl() + "updatePublish"
+            }
+            const payload = {
+                ...article,
                 "title": title,
                 "content": content,
                 "status": "DRAFT"
-            }, {
+            }
+            axios.post(url, payload, {
                 headers: {
-                  'Authorization': `Bearer ${localStorage.getItem("token")}` 
-                }}).then((res) => {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            }).then((res) => {
                 const result = res.data
-                if(result.status === 200){
+                if (result.status === 200) {
                     alert(result.message)
                     navigate("/user-dashboard")
                 }
-                else{
+                else {
                     alert(result.message)
                 }
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err)
             })
         }
-        else{
+        else {
             alert("Please enter title or content can't be empty")
         }
     }
-    const onPublish = () => {
-        if(title !== "" && content!==""){
-            const url = getBaseUrl() + "addArticle"
-            axios.post(url, {
-                "title": title,
-                "content": content,
-                "status": "IN_REVIEW"
-            }, {
+    const onPublish = (e) => {
+        if (title !== "" && content !== "") {
+            var role = getCurrentUserRole()
+            console.log("current role", role)
+            var url = ""
+            var payload = {}
+            if (article.articleId) { //staging
+                url = getBaseUrl() + "updateStaging"
+            }
+            else {
+                url = getBaseUrl() + "updatePublish"
+            }
+            if (role === 2) {
+                payload = {
+                    ...article,
+                    "title": title,
+                    "content": content,
+                    "status": "IN_REVIEW"
+                }
+            }
+            else if (role === 3){
+                payload = {
+                    ...article,
+                    "title": title,
+                    "content": content,
+                    "status": "PUBLISHED"
+                }
+            }
+            axios.post(url, payload, {
                 headers: {
-                  'Authorization': `Bearer ${localStorage.getItem("token")}` 
-                }}).then((res) => {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            }).then((res) => {
                 const result = res.data
-                if(result.status === 200){
+                if (result.status === 200) {
                     alert(result.message)
                     navigate("/user-dashboard")
                 }
-                else{
+                else {
                     alert(result.message)
                 }
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err)
             })
         }
-        else{
+        else {
             alert("Please enter title or content can't be empty")
         }
     }

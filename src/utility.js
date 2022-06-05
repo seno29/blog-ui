@@ -1,7 +1,8 @@
 import jwt from 'jwt-decode'
 
 export const getBaseUrl = () => {
-    return "https://demo-db-2.herokuapp.com/"
+    // return "https://demo-db-2.herokuapp.com/"
+    return "http://localhost:8080/"
 }
 export const getLoggedInUserDetails = () => {
     const token = localStorage.getItem("token")

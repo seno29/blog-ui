@@ -38,8 +38,9 @@ function ReviewArticle() {
                 <Row>
                     <Col className="col-sm-2"></Col>
                     <Col className="col-sm-8">
+                    <div className='f-24 color-light fw-600'>Review Blogs</div>
                         {
-                            articles.length > 0 === 1 &&
+                            articles.length > 0  &&
                             articles.map((article) => (
                                 <div className='a-outer' key={article.id + "" + article.articleId}>
                                     <div className="d-flex title-div">
