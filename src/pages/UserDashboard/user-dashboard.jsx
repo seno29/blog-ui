@@ -11,22 +11,21 @@ function UserDashboard() {
     const navigate = useNavigate();
     const [searchText, setsearchText] = useState("")
     const [loadingArticles, setloadingArticles] = useState(false)
+    const [searchingArticles, setsearching] = useState(false)
     const [articles, setarticles] = useState([])
 
     useEffect(() => {
         setloadingArticles(true)
         const url = getBaseUrl() + "getAllArticles"
-        // const url = getBaseUrl() + "getAllArticlesByUserId"
-        // const url = "https://localhost:8070/getAllArticles"
 
         axios.get(url, {
             headers: {
-               Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
-         }).then((res) => {
+        }).then((res) => {
             setloadingArticles(false)
             const result = res.data;
-            if(result.status === 200){
+            if (result.status === 200) {
                 console.log(result.data.length)
                 setarticles(result.data)
             }
@@ -38,14 +37,26 @@ function UserDashboard() {
 
     const onSearch = (e) => {
         console.log(searchText)
-        const url = getBaseUrl() + "searchArticleByName"
+        // const url = getBaseUrl() + `/getArticleByTitle`
+        const url = `http://localhost:8080/getArticleByTitle`
+        setsearching(true)
         axios.get(url, {
             params: {
                 "searchText": searchText
+            },
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
-        }).then((res) => {
-
+        }
+        ).then((res) => {
+            setsearching(false)
+            const result = res.data
+            if (result.status === 200) {
+                console.log(result.data)
+                setarticles(result.data)
+            }
         }).catch((err) => {
+            setsearching(false)
             console.log(err)
         })
     }
@@ -63,7 +74,7 @@ function UserDashboard() {
                     <Col>
                         <div className='text-center'>
                             <input className='w-25' type="text" name="search" placeholder="Search article by name" onChange={(e) => setsearchText(e.target.value)} value={searchText} />
-                            <button className='p-btn w-30' onClick={onSearch}><i className="fa fa-search" /> Search</button>
+                            <button className='p-btn w-30' onClick={onSearch}><i className="fa fa-search" disabled={searchingArticles} /> Search</button>
                         </div>
                     </Col>
                 </Row>
@@ -80,14 +91,18 @@ function UserDashboard() {
                         {
                             !loadingArticles && articles.map((article, i) => (
                                 <ArticleCard
-                                key={i} 
-                                title={article.title} 
-                                content={article.content} 
-                                author={article.author} 
-                                dateModified={article.dateModified} 
-                                customClick={articleClickHandler}
+                                    key={i}
+                                    title={article.title}
+                                    content={article.content}
+                                    author={article.author}
+                                    dateModified={article.dateModified}
+                                    customClick={articleClickHandler}
                                 />
                             ))
+                        }
+                        {
+                            !searchingArticles && articles.length === 0 && 
+                            (<div className="text-center">No articles found</div>)
                         }
                     </Col>
                     <Col className="col-md-2"></Col>
