@@ -47,25 +47,31 @@ function ArticleHistory() {
                         {article.content}
                     </Col>
                 </Row>
-                {
-                    history.length !== 0 && history.map((article) => (
-                        <>
-                            <div className='f-18 fw-600'><u>Version {article.id}</u></div>
-                            <Row>
-                                <Col className='col-sm-8 article-title'>{article.title}</Col>
-                                <Col className='col-sm-4'>
-                                    <div className="a-date">{article.dateModified}</div>
-                                </Col>
-                            </Row>
-                            <Row className="mt-10">
-                                <Col>
-                                    {article.content}
-                                </Col>
-                            </Row>
-                        </>
-                    ))
-                }
+
+
             </Container>
+            {
+                history.length !== 0 && history.map((article) => (
+                    <Container>
+                        <div className='f-18 fw-600'><u>Version {article.id}</u></div>
+                        <Row>
+                            <Col className='col-sm-8 article-title'>{article.title}</Col>
+                            <Col className='col-sm-4'>
+                                <div className="a-date">{article.dateModified}</div>
+                            </Col>
+                        </Row>
+                        <Row className="mt-10">
+                            <Col>
+                                {article.content}
+                            </Col>
+                        </Row>
+                    </Container>
+                ))
+            }
+            {history.length === 0 &&
+                <Container>
+                    <div className='text-center'>No History</div>
+                </Container>}
         </div>
 
     )

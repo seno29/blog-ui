@@ -13,10 +13,8 @@ function ReviewArticle() {
         navigate("/article-req-view", {state: article})
     }
     useEffect(() => {
-        const url = getBaseUrl() + "getArticlesByStatus" //published articles
-        axios.post(url, {
-            "status": "IN_REVIEW"
-        }, {
+        const url = getBaseUrl() + `getArticleByStatus/IN_REVIEW` //published articles
+        axios.get(url, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
             }
@@ -45,7 +43,7 @@ function ReviewArticle() {
                                 <div className='a-outer' key={article.id + "" + article.articleId}>
                                     <div className="d-flex title-div">
                                         <div className="a-title">{article.title}</div>
-                                        <div className="a-author">{article.author}</div>
+                                        <div className="a-author mr-2">Author : {article.author}</div>
                                         <button className="p-btn p-12" onClick={(e) => onApprove(article)}><i className="fa fa-edit" /> Approve</button>
                                     </div>
                                     <div className="a-content">{article.content.length > 300 ? article.content.substring(0, 300) + "..." : article.content}</div>

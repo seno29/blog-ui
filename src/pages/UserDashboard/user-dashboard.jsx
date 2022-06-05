@@ -14,6 +14,9 @@ function UserDashboard() {
     const [searchingArticles, setsearching] = useState(false)
     const [articles, setarticles] = useState([])
 
+    const [dateChecked, setdateChecked] = useState(false)
+    const [authorChecked, setauthorChecked] = useState(false)
+
     useEffect(() => {
         setloadingArticles(true)
         const url = getBaseUrl() + "getAllArticles"
@@ -64,6 +67,33 @@ function UserDashboard() {
         console.log("Called");
         navigate("/article-view", { state: { title: e.title, content: e.content, author: e.author, dateModified: e.dateModified } })
     }
+    const handleFilter = (value, type) => {
+        if(type === 'date'){
+            setdateChecked(value)
+        }
+        else{
+           setauthorChecked(value)
+        }
+        const payload = {
+            "date": dateChecked ? 1 : 0,
+            "author": authorChecked ? 1 : 0
+        }
+        const url = getBaseUrl() + "getArticleBySortedDateAuthor"
+        axios.get(url, {
+            params: payload,
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        }).then((res) => {
+            const result = res.data
+            if (result.status === 200) {
+                console.log(result.data)
+                setarticles(result.data)
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     return (
         <div>
             <Navbar />
@@ -80,9 +110,9 @@ function UserDashboard() {
                 <Row>
                     <Col className="col-md-2">
                         <div className="color-light"><h4>Filter by:</h4></div>
-                        <input type="checkbox" name="dateFilter" value="Date" />
+                        <input type="checkbox" name="dateFilter"  checked={dateChecked} onChange={(e) => handleFilter(!dateChecked, 'date')}/>
                         <label className='ml-5'>Date</label><br />
-                        <input type="checkbox" name="authorFilter" value="Author" />
+                        <input type="checkbox" name="authorFilter"  checked={authorChecked} onChange={(e) => handleFilter(!authorChecked, 'author')} />
                         <label className='ml-5'>Author</label><br />
                     </Col>
                     <Col>

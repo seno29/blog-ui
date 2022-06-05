@@ -2,13 +2,14 @@ import React from 'react'
 import Navbar from '../../components/Navbar/nav-bar'
 import { Container, Row, Col } from 'react-bootstrap'
 import "../ArticleView/article-view.css"
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { getBaseUrl } from '../../utility'
 import axios from 'axios'
 
 function ArticleRequestView() {
     const location = useLocation()
     const article = location.state
+    const navigate = useNavigate()
 
     const onReject = () => {
         // const url = getBaseUrl() + "appro"
@@ -23,6 +24,9 @@ function ArticleRequestView() {
         }).then((res) => {
             const result = res.data;
             alert(result.message)
+            if(result.status === 200){
+                navigate("/review-article")
+            }
         }).catch((err) => {
             console.log(err)
         })

@@ -43,7 +43,9 @@ code {
 .p-12{
   padding: 1px 8px !important;
 }
-
+.mr-2{
+  margin-right: 8px;
+}
 .main-title {
   font-size: 4rem;
   letter-spacing: 0.5rem;
