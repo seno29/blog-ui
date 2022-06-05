@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/nav-bar'
 import { Container, Row, Col } from 'react-bootstrap'
-import { getBaseUrl } from '../../utility'
+import { getBaseUrl, getCurrentUserRole } from '../../utility'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,7 +20,7 @@ function WriteArticle() {
                 "status": "DRAFT"
             }, {
                 headers: {
-                  'Authorization': `Bearer ${localStorage.getItem("token")}` 
+                  'Authorization': `Bearer ${sessionStorage.getItem("token")}` 
                 }}).then((res) => {
                 const result = res.data
                 if(result.status === 200){
@@ -41,13 +41,25 @@ function WriteArticle() {
     const onPublish = () => {
         if(title !== "" && content!==""){
             const url = getBaseUrl() + "addArticle"
-            axios.post(url, {
-                "title": title,
-                "content": content,
-                "status": "IN_REVIEW"
-            }, {
+            var payload = {}
+            const role = getCurrentUserRole()
+            if(role === 3){
+                payload = {
+                    "title": title,
+                    "content": content,
+                    "status": "PUBLISHED"
+                }
+            }
+            else{
+                payload = {
+                    "title": title,
+                    "content": content,
+                    "status": "IN_REVIEW"
+                }
+            }
+            axios.post(url, payload, {
                 headers: {
-                  'Authorization': `Bearer ${localStorage.getItem("token")}` 
+                  'Authorization': `Bearer ${sessionStorage.getItem("token")}` 
                 }}).then((res) => {
                 const result = res.data
                 if(result.status === 200){

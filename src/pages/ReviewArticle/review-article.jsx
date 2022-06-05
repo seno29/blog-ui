@@ -16,7 +16,7 @@ function ReviewArticle() {
         const url = getBaseUrl() + `getArticleByStatus/IN_REVIEW` //published articles
         axios.get(url, {
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }).then((res) => {
             const result = res.data;

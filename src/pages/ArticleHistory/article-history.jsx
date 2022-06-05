@@ -15,7 +15,7 @@ function ArticleHistory() {
         const url = getBaseUrl() + `getArticleHistory/${article.id}`
         axios.get(url, {
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }).then((res) => {
             const result = res.data
@@ -28,11 +28,7 @@ function ArticleHistory() {
         <div>
             <Navbar />
             <div className='h-100px'></div>
-            <Container>
-                <div className='f-24 color-light fw-700'>Blog History
-                </div>
-
-            </Container>
+            
 
             <Container className='outer-container mt-10'>
                 <div className='f-18 fw-600'><u>Current Version</u></div>
@@ -50,10 +46,15 @@ function ArticleHistory() {
 
 
             </Container>
+            <Container>
+                <div className='f-24 color-light fw-700'>Blog History
+                </div>
+
+            </Container>
             {
-                history.length !== 0 && history.map((article) => (
-                    <Container>
-                        <div className='f-18 fw-600'><u>Version {article.id}</u></div>
+                history.length !== 0 && history.map((article, i) => (
+                    <Container className='outer-container mt-10'>
+                        <div className='f-18 fw-600'><u>Version { history.length - i}</u></div>
                         <Row>
                             <Col className='col-sm-8 article-title'>{article.title}</Col>
                             <Col className='col-sm-4'>

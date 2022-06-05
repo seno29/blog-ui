@@ -24,7 +24,7 @@ function EditArticle() {
         if (title !== "" && content !== "") {
 
             var url = ""
-            if (article.articleId) { //staging
+            if (article.articleId === 0) { //staging
                 url = getBaseUrl() + "updateStaging"
             }
             else {
@@ -38,7 +38,7 @@ function EditArticle() {
             }
             axios.post(url, payload, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    'Authorization': `Bearer ${sessionStorage.getItem("token")}`
                 }
             }).then((res) => {
                 const result = res.data
@@ -63,7 +63,7 @@ function EditArticle() {
             console.log("current role", role)
             var url = ""
             var payload = {}
-            if (article.articleId) { //staging
+            if (article.articleId === 0) { //staging
                 url = getBaseUrl() + "updateStaging"
             }
             else {
@@ -87,7 +87,7 @@ function EditArticle() {
             }
             axios.post(url, payload, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    'Authorization': `Bearer ${sessionStorage.getItem("token")}`
                 }
             }).then((res) => {
                 const result = res.data

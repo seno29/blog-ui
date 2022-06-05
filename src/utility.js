@@ -5,7 +5,7 @@ export const getBaseUrl = () => {
     return "http://localhost:8080/"
 }
 export const getLoggedInUserDetails = () => {
-    const token = localStorage.getItem("token")
+    const token = sessionStorage.getItem("token")
     if (token) {
         const decodedToken = jwt(token)
         console.log(decodedToken)
@@ -13,7 +13,7 @@ export const getLoggedInUserDetails = () => {
     }
 }
 export const isLoggedIn = () => {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
         return true
     }
     return false

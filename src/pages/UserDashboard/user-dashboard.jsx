@@ -23,7 +23,7 @@ function UserDashboard() {
 
         axios.get(url, {
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }).then((res) => {
             setloadingArticles(false)
@@ -47,7 +47,7 @@ function UserDashboard() {
                 "searchText": searchText
             },
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }
         ).then((res) => {
@@ -82,7 +82,7 @@ function UserDashboard() {
         axios.get(url, {
             params: payload,
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }).then((res) => {
             const result = res.data

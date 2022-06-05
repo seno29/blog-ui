@@ -16,7 +16,7 @@ function MyBlogs() {
     const url = getBaseUrl() + "getAllArticlesByUserId" //published articles
     axios.get(url, {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: "Bearer " + sessionStorage.getItem("token")
       }
     }).then((res) => {
       const result = res.data;
@@ -32,7 +32,7 @@ function MyBlogs() {
     const url = getBaseUrl() + "getAllStagedArticlesByUserId" //published articles
     axios.get(url, {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: "Bearer " + sessionStorage.getItem("token")
       }
     }).then((res) => {
       const result = res.data;

@@ -13,7 +13,7 @@ function Navbar() {
       setrole(getCurrentUserRole())
    }, [])
    const logout = () => {
-      localStorage.clear()
+      sessionStorage.clear()
       navigate("/login")
    }
    const myBlogs = () => {

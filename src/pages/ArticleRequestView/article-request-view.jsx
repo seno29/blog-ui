@@ -19,7 +19,7 @@ function ArticleRequestView() {
         const url = getBaseUrl() + "approveArticle"
         axios.post(url, article, {
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + sessionStorage.getItem("token")
             }
         }).then((res) => {
             const result = res.data;

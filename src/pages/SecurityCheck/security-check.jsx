@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import { getBaseUrl, getLoggedInUserDetails } from '../../utility'
 import axios from 'axios'
-import jwt from 'jwt-decode'
 
 function SecurityCheck() {
   const location = useLocation()
@@ -28,7 +27,7 @@ function SecurityCheck() {
         const result = res.data;
         
         if(result.status === 200){
-          localStorage.setItem("token", result.token)
+          sessionStorage.setItem("token", result.token)
           const userDetails = getLoggedInUserDetails()
           if(userDetails && userDetails.role ){
             if(userDetails.role === 1 || userDetails.role === 2 || userDetails.role === 3){
