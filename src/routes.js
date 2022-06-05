@@ -1,4 +1,5 @@
-import AdminDashboard from "./pages/AdminDashboard/admin-dashboard";
+import MyBlogs from "./pages/MyBlogs/myblogs";
+import ArticleHistory from "./pages/ArticleHistory/article-history";
 import ArticleRequestView from "./pages/ArticleRequestView/article-request-view";
 import ArticleView from "./pages/ArticleView/article-view";
 import EditArticle from "./pages/EditArticle/edit-article";
@@ -44,7 +45,7 @@ export const routes = [
     {
         path: "/admin",
         exact: true,
-        component: <AdminDashboard />
+        component: <MyBlogs />
     },
     {
         path: "/article-req-view",
@@ -70,5 +71,10 @@ export const routes = [
         path: "/review-article",
         exact: true,
         component: <ReviewArticle />
+    },
+    {
+        path: "/article-history",
+        exact: true,
+        component: <ArticleHistory />
     },
 ]

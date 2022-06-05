@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { getBaseUrl } from '../../utility'
+import { getBaseUrl, getCurrentUserRole } from '../../utility'
 import Navbar from '../../components/Navbar/nav-bar'
 import { Container, Row, Col } from 'react-bootstrap'
 import axios from 'axios';
-import "./admin-dashboard.css"
+import "./myblogs.css"
 import { useNavigate } from 'react-router-dom';
 
-function AdminDashboard() {
+function MyBlogs() {
   const [pubArticles, setpubArticles] = useState([])
   const [stArticles, setstArticles] = useState([])
   const [tabIndex, setTabIndex] = useState(1)
@@ -47,11 +47,14 @@ function AdminDashboard() {
 
   const onEdit = (article) => {
     console.log("Edit called")
-    navigate("/edit-article", {state: article})
+    navigate("/edit-article", { state: article })
   }
-  const editPublished = (e) => {
 
+  const onHistory = (article) => {
+    console.log("History called")
+    navigate("/article-history", { state: article })
   }
+
   return (
     <div>
       <Navbar />
@@ -63,16 +66,18 @@ function AdminDashboard() {
             <div className='f-24 color-light fw-600 m-10'>My Blogs</div>
             <div className="d-flex tab m-10">
               <div className={tabIndex === 1 ? "tab-item tab-active" : "tab-item"} onClick={(e) => setTabIndex(1)}>DRAFT</div>
-              <div className={tabIndex === 2 ? "tab-item tab-active" : "tab-item"} onClick={(e) => setTabIndex(2)}>IN REVIEW</div>
+              { getCurrentUserRole() === 2 &&
+                <div className={tabIndex === 2 ? "tab-item tab-active" : "tab-item"} onClick={(e) => setTabIndex(2)}>IN REVIEW</div>
+              }
               <div className={tabIndex === 3 ? "tab-item tab-active" : "tab-item"} onClick={(e) => setTabIndex(3)}>PUBLISHED</div>
             </div>
             {
-              tabIndex === 1 && 
+              tabIndex === 1 &&
               stArticles.filter(article => article.status === 'DRAFT').map((article) => (
                 <div className='a-outer' key={article.id + "" + article.articleId}>
                   <div className="d-flex title-div">
                     <div className="a-title">{article.title}</div>
-                    <button className="p-btn p-12"  onClick={(e) => onEdit(article)}><i className="fa fa-edit"/> Edit</button>
+                    <button className="p-btn p-12" onClick={(e) => onEdit(article)}><i className="fa fa-edit" /> Edit</button>
                   </div>
                   <div className="a-content">{article.content.length > 300 ? article.content.substring(0, 300) + "..." : article.content}</div>
                   <div className='a-date'>Posted on : {article.dateModified}</div>
@@ -80,7 +85,7 @@ function AdminDashboard() {
               ))
             }
             {
-              tabIndex === 2 && 
+              tabIndex === 2 &&
               stArticles.filter(article => article.status === 'IN_REVIEW').map((article) => (
                 <div className='a-outer' key={article.id + "" + article.articleId}>
                   <div className="d-flex title-div">
@@ -98,7 +103,8 @@ function AdminDashboard() {
                 <div className='a-outer' key={article.id}>
                   <div className="d-flex title-div">
                     <div className="a-title">{article.title}</div>
-                    <button className="p-btn p-12"  onClick={(e) => onEdit(article)}><i className="fa fa-edit"/> Edit</button>
+                    <button className="p-btn p-12" onClick={(e) => onHistory(article)}> View History</button>
+                    <button className="p-btn p-12" onClick={(e) => onEdit(article)}><i className="fa fa-edit" /> Edit</button>
                   </div>
                   <div className="a-content">{article.content.length > 300 ? article.content.substring(0, 300) + "..." : article.content}</div>
                   <div className='a-date'>Posted on : {article.dateModified}</div>
@@ -117,4 +123,4 @@ function AdminDashboard() {
   )
 }
 
-export default AdminDashboard
+export default MyBlogs
